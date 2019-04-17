@@ -1,0 +1,134 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.mike.pinklist.Fragment_todo">
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/todo"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
+            android:paddingTop="15dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="20dp"
+            android:id="@+id/messag"
+            android:background="@drawable/todo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:src="@drawable/circled_user_male_104_px_2"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FCE4EB"
+                android:layout_marginEnd="14dp"
+                android:layout_marginRight="14dp"/>
+            <LinearLayout
+                android:layout_toRightOf="@+id/profile_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="5dp">
+            <TextView
+                android:layout_marginTop="2dp"
+                android:textSize="22sp"
+                android:textColor="@color/midnightBlue"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginBottom="2dp"
+                android:id="@+id/profile_namess" />
+            <TextView
+                android:id="@+id/profile_email"
+                android:layout_marginLeft="10dp"
+                android:textColor="#37558c"
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            </LinearLayout>
+        </RelativeLayout>
+       <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:layout_marginLeft="22dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_settings"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:textColor="@color/silver"
+                android:layout_marginBottom="20dp"/>
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get email notifications"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="17dp"
+                android:id="@+id/set_notifications"
+                android:textColor="@color/midnightBlue"
+                android:layout_marginBottom="20dp"
+                app:thumbTint="@color/white"
+                />
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/set_vibration"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_height="wrap_content"
+                android:text="Vibrate on alert"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="17dp"
+                android:textColor="@color/midnightBlue"
+                app:thumbTint="@color/white"
+                />
+           <TextView
+               android:layout_marginLeft="22dp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Floss Settings"
+               android:layout_marginTop="@dimen/activity_horizontal_margin"
+               android:textColor="@color/silver"
+               android:layout_marginBottom="20dp"/>
+
+           <android.support.v7.widget.SwitchCompat
+               android:layout_width="match_parent"
+               android:id="@+id/set_sharing"
+               android:layout_marginBottom="20dp"
+               android:layout_height="wrap_content"
+               android:text="Share profile with other floss users"
+               android:layout_marginLeft="22dp"
+               android:clickable="false"
+               android:layout_marginRight="17dp"
+               android:textColor="@color/light"
+               app:thumbTint="@color/white"/>
+           <android.support.v7.widget.SwitchCompat
+               android:clickable="false"
+               android:layout_width="match_parent"
+               android:id="@+id/show_status"
+               android:layout_height="wrap_content"
+               android:text="Show your task completion status"
+               android:layout_marginLeft="22dp"
+               android:layout_marginRight="17dp"
+               android:textColor="@color/light"
+               app:thumbTint="@color/white"
+
+               />
+       </LinearLayout>-->
+<!--        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:id="@android:id/list">
+        </ListView>-->
+    </LinearLayout>
+</FrameLayout>

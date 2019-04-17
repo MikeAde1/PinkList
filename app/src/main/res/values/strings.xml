@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">PinkList</string>
+    <string name="candy">candy</string>
+    <string name="login">Login</string>
+    <string name="register">REGISTER</string>
+    <string name="new_user_register_here"><u>New user? Register Here</u></string>
+    <string name="Reg">Register</string>
+    <string name="Registering">By registering, you automatically \n accept the Terms &amp; Polices of\n candy app. </string>
+    <string name="account"><u>Have an account? Log In</u></string>
+    <string name="password">Password</string>
+    <string name="forgot"><u>Forgot?</u></string>
+    <string name="submit">Submit</string>
+    <string name="auth_failed">Sign-in failed</string>
+    <string name="signedout">signed out</string>
+    <string name="email">Email</string>
+    <string name="title_activity_to_do">To_do</string>
+    <string name="title_home">Home</string>
+    <string name="title_scheduler">SCHEDULER</string>
+    <string name="title_notifications">NOTIFICATIONS</string>
+    <string name="to_do">TO-DO</string>
+    <string name="today_s_list"><b>Today\'s\nlist -</b></string>
+    <string name="title_activity_profile">profile</string>
+    <string name="title_profile">PROFILE</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="write_here"><b>Write here....</b></string>
+    <string name="complete_by">Complete by</string>
+    <string name="upcoming_tasks">Upcoming\ntasks -</string>
+    <string name="alerts_updates"><![CDATA[Alerts &\nupdates -]]></string>
+    <string name="full_name"><b>Full Name....</b></string>
+    <string name="notification_settings">Notification Settings</string>
+    <string name="search">Search</string>
+    <string name="save">SAVE</string>
+    <string name="textview">textview</string>
+
+
+</resources>

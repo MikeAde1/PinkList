@@ -1,0 +1,22 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <!-- your app branding color for the app bar -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- darker variant for the status bar and contextual app bars -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- theme UI controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/green</item>
+        <!--for the track when inactive-->
+        <item name="android:colorForeground">@color/silver</item>
+        <!--<item name="navigationIcon">@drawable/ic_if_arrow_back_1063891</item>-->
+        <item name="searchViewStyle">@style/SearchViewMy</item>
+    </style>
+    <style name="SearchViewMy" parent="Widget.AppCompat.SearchView">
+        <item name="searchHintIcon">@null</item>
+    </style>
+
+
+</resources>

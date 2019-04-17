@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.mike.pinklist.To_do">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.v7.widget.Toolbar
+            app:titleTextColor="@color/midnightBlue"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            app:collapseIcon="@drawable/ic_if_arrow_back_1063891"
+            android:layout_height="wrap_content"
+            android:background="@color/Colorpigpink"
+            android:paddingBottom="10dp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@android:style/Widget.DeviceDefault.ActionBar" />
+
+        <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </FrameLayout>
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_marginTop="-10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:itemBackground="@color/Colorpigpink"
+            android:background="?android:attr/windowBackground"
+            app:menu="@menu/navigation" />
+    </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_alignParentBottom="true"
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/text_margin"
+        app:fabSize="normal"
+        app:backgroundTint="@color/midnightBlue"
+        app:srcCompat="@drawable/ic_add_black_24dp"
+        android:focusable="true" />
+</RelativeLayout>

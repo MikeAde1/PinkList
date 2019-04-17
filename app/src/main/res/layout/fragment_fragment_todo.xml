@@ -1,0 +1,42 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.mike.pinklist.Fragment_todo">
+
+    <!-- TODO: Update blank fragment layout -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/todo"
+            android:orientation="vertical">
+            <TextView
+                android:paddingTop="10dp"
+                android:paddingLeft="15dp"
+                android:paddingBottom="15dp"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:id="@+id/messag"
+                android:background="@drawable/todo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/midnightBlue"
+                android:text="@string/today_s_list"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+               <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/listview"
+                   android:background="@color/white" />
+                <android.support.v7.widget.RecyclerView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recycler_view"/>
+            </RelativeLayout>
+        </LinearLayout>
+</FrameLayout>

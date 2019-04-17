@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceCategory
+    android:title="Notifications"
+    android:layout="@layout/preferences"
+    />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="email"
+        android:layout="@layout/preferences_category"
+       />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="alert"
+        android:layout="@layout/preferences_category2"
+        />
+    <PreferenceCategory
+        android:title=""
+        android:key="floss"
+        android:layout="@layout/preferences2"/>
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="share_profile"
+        android:layout="@layout/preferences_category3"
+        />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="task_status"
+        android:layout="@layout/preferences_category4"
+        />
+</PreferenceScreen>

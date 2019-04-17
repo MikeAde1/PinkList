@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "129518870379",
+    "firebase_url": "https://pinklist-ebabe.firebaseio.com",
+    "project_id": "pinklist-ebabe",
+    "storage_bucket": "pinklist-ebabe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129518870379:android:c1aca1eb39c3e4cb",
+        "android_client_info": {
+          "package_name": "com.example.mike.pinklist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129518870379-0tr607fln1rc06drqnjdftkctf2npqpn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mike.pinklist",
+            "certificate_hash": "64b73d98f877c01adadbeac5a5d29b90464426d1"
+          }
+        },
+        {
+          "client_id": "129518870379-pc0ts53g9qpdlb7ndm5blqdjjhopiec6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDTs3pFqhwbh4ZOvHtnDD4ehQXZF_WRQA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129518870379-pc0ts53g9qpdlb7ndm5blqdjjhopiec6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

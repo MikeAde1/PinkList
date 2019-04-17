@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.mike.pinklist">
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <application
+        android:name=".Backend"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            tools:replace="android:value"/>
+
+        <activity android:name=".MainActivity"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Login"
+            />
+        <activity android:name=".Register"
+            />
+        <activity android:name=".Forgot"
+            />
+        <activity
+            android:name=".To_do"
+            android:label="@string/title_activity_to_do"
+            />
+        <activity android:name=".NewTask">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mike.pinklist.To_do"
+                />
+        </activity>
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
+        <activity android:name=".EditProfile"
+           />
+
+    </application>
+</manifest>
