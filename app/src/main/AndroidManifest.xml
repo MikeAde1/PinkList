@@ -11,38 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            tools:replace="android:value"/>
 
-        <activity android:name=".MainActivity"
-            >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login"
-            />
-        <activity android:name=".Register"
-            />
-        <activity android:name=".Forgot"
-            />
+        <activity android:name=".Login" />
+        <activity android:name=".Register" />
+        <activity android:name=".Forgot" />
         <activity
             android:name=".To_do"
-            android:label="@string/title_activity_to_do"
-            />
+            android:label="@string/title_activity_to_do" />
         <activity android:name=".NewTask">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mike.pinklist.To_do"
-                />
+                android:value="com.example.mike.pinklist.To_do" />
         </activity>
         <receiver
             android:name=".AlarmReceiver"
             android:enabled="true"
             android:exported="true" />
-        <activity android:name=".EditProfile"
-           />
+        <activity android:name=".EditProfile" />
 
     </application>
 </manifest>

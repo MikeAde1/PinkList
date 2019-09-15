@@ -11,6 +11,7 @@ public class Task {
     private String content,task_priority;
     private String completed_by;
     private String date;
+    private String key;
     private boolean save_as_alarm;
     private boolean show_as_notification;
     private boolean completed = false;
@@ -76,5 +77,13 @@ public class Task {
     }
     public int getTime(){
         return time;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

@@ -8,11 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceFragment;
 import android.provider.*;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -86,6 +88,8 @@ public class To_do extends AppCompatActivity implements Fragment_todo.OnFragment
         }
     };
 
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +99,7 @@ public class To_do extends AppCompatActivity implements Fragment_todo.OnFragment
         context = this;
         cancelNotification(getIntent());
         Toolbar my_toolbar = (Toolbar) findViewById(R.id.toolbar);
+        my_toolbar.setElevation(0f);
         setSupportActionBar(my_toolbar);
         //my_toolbar.setNavigationIcon(R.drawable.ic_if_arrow_back_1063891);
         getSupportActionBar().setTitle(R.string.to_do);
@@ -133,10 +138,11 @@ public class To_do extends AppCompatActivity implements Fragment_todo.OnFragment
         return super.onOptionsItemSelected(item);
     }*/
     private void cancelNotification(Intent intent){
-        //Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
         String messages = intent.getStringExtra("messages");
+        int code = intent.getIntExtra("code",0);
+
         if(messages != null){
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 123, intent,
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), code, intent,
                     PendingIntent.FLAG_CANCEL_CURRENT);
             AlarmManager alarmManager = (AlarmManager)getApplicationContext().getSystemService(ALARM_SERVICE);
             if (alarmManager != null) {
@@ -144,18 +150,23 @@ public class To_do extends AppCompatActivity implements Fragment_todo.OnFragment
                 if (myVib != null){
                     myVib.cancel();
                 }
-                MediaPlayer mp = MediaPlayer.create(context, (android.provider.Settings.System.DEFAULT_RINGTONE_URI));
+                MediaPlayer mp = MediaPlayer.create(context.getApplicationContext(), (android.provider.Settings.System.DEFAULT_RINGTONE_URI));
                 if (mp != null){
                     mp.stop();
-                    Toast.makeText(context, messages, Toast.LENGTH_SHORT).show();
+                    mp.reset();
+                    mp.release();
+                    //create same media player instance make it static
+                    //media player created in the broadcast receiver might be the cause
+                    //Toast.makeText(context, messages, Toast.LENGTH_SHORT).show();
                 }
                 alarmManager.cancel(pendingIntent);
             }
 
             Log.d(TAG,messages);
-        //Toast.makeText(context,messages,Toast.LENGTH_SHORT).show();*/
+        //Toast.makeText(context,String.valueOf(code),Toast.LENGTH_SHORT).show();
         }
     }
+
     @Override
     public void onFragmentInteraction(Uri uri) {
     }

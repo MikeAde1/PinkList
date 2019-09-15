@@ -16,6 +16,7 @@
     import android.os.Build;
     import android.os.Vibrator;
     import android.provider.Settings;
+    import android.support.annotation.NonNull;
     import android.support.annotation.RequiresApi;
     import android.support.v7.app.NotificationCompat;
     import android.support.v4.app.NotificationManagerCompat;
@@ -37,6 +38,7 @@
 
     import java.util.ArrayList;
     import java.util.List;
+    import java.util.Objects;
 
     import static android.R.id.message;
     import static android.content.Context.MODE_PRIVATE;
@@ -56,7 +58,8 @@
         List<Task> list = new ArrayList<>();
         SessionManager sessionManager;
         String notification, title;
-        String msg;
+        int code;
+        String msg, key;
         @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public void onReceive(final Context context, Intent intent) {
@@ -65,23 +68,23 @@
             DatabaseReference databaseRef = database.getReference("users");
             notification = intent.getStringExtra("notification");
             msg = intent.getStringExtra("message");
-            int value = intent.getIntExtra("value", 0);
+            code = intent.getIntExtra("value", 0);
             title = intent.getStringExtra("title");
-            databaseRef.child(firebaseAuth.getCurrentUser().getUid()).child("task_list").orderByChild("content").
-                    equalTo(msg).addValueEventListener(new ValueEventListener() {
+            key = intent.getStringExtra("key");
+            databaseRef.child(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()).child("task_list").child(key).addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot != null){
-                        setNotification(msg,context);
-                }}
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    //if task has not been deleted
+                    setNotification(msg,context);
+                }
 
                 @Override
-                public void onCancelled(DatabaseError databaseError) {
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
             });
-
-            }
+            //there has to be a
+        }
        /* private Uri getAlarmUri() {
             Uri alert = RingtoneManager
                     .getDefaultUri(RingtoneManager.TYPE_ALARM);
@@ -108,16 +111,15 @@
                 myVib.vibrate(new long[]{ 500,500,500,500,500,500,500,500 },2);
             }
             if (notification != null){
-                MediaPlayer mp = MediaPlayer.create(context, (android.provider.Settings.System.DEFAULT_RINGTONE_URI));
+                MediaPlayer mp = MediaPlayer.create(context.getApplicationContext(), (android.provider.Settings.System.DEFAULT_RINGTONE_URI));
                 mp.start();
             }
-            //System.out.print(String.valueOf(f));
             Intent notIntent = new Intent(context, To_do.class);
-            //clears the activity that started this activity, and also refre
+            //clears the activity that started this activity, and also refreshes
             notIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);//check the reorder flag
             notIntent.putExtra("messages", msg);
-            PendingIntent pIntent = PendingIntent.getActivity(context, 123, notIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-            //Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            notIntent.putExtra("code", code);
+            PendingIntent pIntent = PendingIntent.getActivity(context, code, notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             NotificationCompat.Builder builder = (Builder) new Builder(context).setAutoCancel(false)
                     .setContentIntent(pIntent)
                     .setContentTitle(title)

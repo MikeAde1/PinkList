@@ -12,6 +12,8 @@
     import android.net.Uri;
     import android.os.Build;
     import android.os.Bundle;
+    import android.preference.CheckBoxPreference;
+    import android.support.annotation.NonNull;
     import android.support.annotation.RequiresApi;
     import android.support.v4.app.Fragment;
     import android.support.v4.app.FragmentTransaction;
@@ -53,6 +55,7 @@
     import java.util.Calendar;
     import java.util.Date;
     import java.util.List;
+    import java.util.Objects;
     import java.util.TimeZone;
 
     /**
@@ -168,7 +171,7 @@
                                  Bundle savedInstanceState) {
             view = inflater.inflate(R.layout.fragment_fragment_todo, container, false);
             TextView tv= (TextView) view.findViewById(R.id.messag);
-            Typeface tp = Typeface.createFromAsset(getCntext().getAssets(),"fonts/NotoSans-Bold.ttf");
+            Typeface tp = Typeface.createFromAsset(getContext().getAssets(),"fonts/NotoSans-Bold.ttf");
             tv.setTypeface(tp);
             listView = (ListView)view.findViewById(R.id.listview);
             /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -205,6 +208,7 @@
             taskAdapter = new TaskAdapter(getContext(),tasklist);
             listView.setAdapter(taskAdapter);
         }
+
         private void fetchData() {
          /*   if (tasklist.size() > 0)
                 tasklist.clear();
@@ -305,12 +309,10 @@
         }
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.edit_profile:
-                    return true;
-                default:
-                    return super.onOptionsItemSelected(item);
+            if (item.getItemId() == R.id.edit_profile) {
+                return true;
             }
+            return super.onOptionsItemSelected(item);
         }
         //using this app you must try how to setup the single adapter for recycler/listview//weekend
         //also use search for suugestion adapter
@@ -330,7 +332,7 @@
             long me = System.currentTimeMillis();
             String dt = spd.format(me);
 
-            Log.i("present", cal.getTime().toString());
+           // Log.i("present", cal.getTime().toString());
             return dt;
         }
 
@@ -404,10 +406,10 @@
 
         @Override
         public boolean onQueryTextChange(final String newText) {
-            databaseRef.child(firebaseAuth.getCurrentUser().getUid()).child("task_list").
+            databaseRef.child(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()).child("task_list").
                     addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     //listView.invalidateViews();
                     tasklist.clear();
                     for (DataSnapshot snapshot: dataSnapshot.getChildren()){
@@ -426,7 +428,7 @@
                 }
 
                 @Override
-                public void onCancelled(DatabaseError databaseError) {
+                public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
           /*ArrayList<Task> tasklist = new ArrayList<>();
@@ -530,9 +532,9 @@
             builder.create().show();
         }
 
-        private void deleteFromDatabase(final int position) {
+        public void deleteFromDatabase(final int position) {
             int time = tasklist.get(position).getTime();
-            databaseRef.child(firebaseAuth.getCurrentUser().getUid()).child("task_list").child(task_position.get(position))
+            databaseRef.child(firebaseAuth.getCurrentUser().getUid()).child("task_list").child(tasklist.get(position).getKey())
                     .setValue(null);
                     Task tasklists;
                     tasklists = tasklist.get(position);

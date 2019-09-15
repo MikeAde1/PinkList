@@ -72,9 +72,6 @@ public class TaskAdapter extends BaseAdapter{
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        database = FirebaseDatabase.getInstance();
-        firebaseAuth = FirebaseAuth.getInstance();
-        databaseRef = database.getReference("users");
         ViewHolder holder = null;
         if(convertView == null){
             convertView = layoutInflater.inflate(R.layout.adapter_task_item,null);
@@ -160,6 +157,7 @@ public class TaskAdapter extends BaseAdapter{
         holder.tv.setText(s);
         return convertView;
     }
+
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }

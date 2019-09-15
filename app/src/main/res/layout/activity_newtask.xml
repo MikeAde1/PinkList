@@ -94,6 +94,7 @@
                 android:text="Save as alarm"
                 android:textSize="13sp"
                 android:checked="false"
+                android:enabled="false"
                 android:textAlignment="gravity"
                 android:textColor="@color/midnightBlue"
                 app:thumbTint="@color/white" />
