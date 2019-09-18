@@ -119,6 +119,8 @@ public class Notifications extends Fragment implements SearchView.OnQueryTextLis
     }
 
     private void fetchData(){
+        message.setText("No task added today");
+        message2.setText("No task added yesterday");
         //today's date
         if (taskList.size()>0)
             taskList.clear();
@@ -130,6 +132,7 @@ public class Notifications extends Fragment implements SearchView.OnQueryTextLis
                 Log.d("checks", String.valueOf(dataSnapshot));
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     Task task = dataSnapshot1.getValue(Task.class);
+
                     taskList.add(task);
                     if (taskList.size() == 0){
                      //todayList.add(complete);
