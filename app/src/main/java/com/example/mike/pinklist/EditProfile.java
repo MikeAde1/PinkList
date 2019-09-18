@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +31,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
 
 public class EditProfile extends AppCompatActivity {
     private String email, full_name;
@@ -60,6 +64,7 @@ public class EditProfile extends AppCompatActivity {
         sessionManager = new SessionManager(getApplicationContext());
         FloatingActionButton fb = (FloatingActionButton) findViewById(R.id.fbb);
         fb.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
                 email = etEmail.getText().toString();
@@ -131,6 +136,7 @@ public class EditProfile extends AppCompatActivity {
         return haveConnectedWifi || haveConnectedMobile;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void setProfile() {
         if (!haveNetworkConnection()) {
             Toast.makeText(getApplicationContext(),"Please connect to the internet",Toast.LENGTH_SHORT).show();
@@ -139,13 +145,15 @@ public class EditProfile extends AppCompatActivity {
         if (!full_name.equals("") || !TextUtils.isEmpty(full_name)) {
             ProfileEdit p = new ProfileEdit();
             p.setNames(full_name);
-            databaseRef.child(firebaseAuth.getCurrentUser().getUid()).child("User_details").setValue(p).addOnCompleteListener
-                    //for username
-                (new OnCompleteListener<Void>() {
+            //save name
+            databaseRef.child(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()).child("User_details").setValue(p)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            if (!email.equals("") || !TextUtils.isEmpty(email)) {
+                            Log.d("user_name", full_name);
+                            //save email
+                            /*if (!email.equals("") || !TextUtils.isEmpty(email)) {
                                 progressDialog.setMessage("Loading..");
                                 progressDialog.show();
                                 firebaseAuth.getCurrentUser().updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -164,14 +172,15 @@ public class EditProfile extends AppCompatActivity {
                                 });
                             }
                             else {
+                                progressDialog.dismiss();
                                 finish();
-                            }
+                            }*/
                         }
                     }
                 });
         }
-        if (full_name.equals("") || TextUtils.isEmpty(full_name)){
-            if (!email.equals("") || !TextUtils.isEmpty(email)){
+
+        if (!email.equals("") || !TextUtils.isEmpty(email)){
                 progressDialog.setMessage("Loading...");
                 progressDialog.show();
                 firebaseAuth.getCurrentUser().updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -188,8 +197,10 @@ public class EditProfile extends AppCompatActivity {
                             progressDialog.dismiss();
                         }}
                     });
-                }
-            }
+        }else {
+            finish();
+        }
+
         }
 }
 
