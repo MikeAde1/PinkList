@@ -111,8 +111,7 @@
                 myVib.vibrate(new long[]{ 500,500,500,500,500,500,500,500 },2);
             }
             if (notification != null){
-                MediaPlayer mp = MediaPlayer.create(context.getApplicationContext(), (android.provider.Settings.System.DEFAULT_RINGTONE_URI));
-                mp.start();
+               getMediaPlayer(context).start();
             }
             Intent notIntent = new Intent(context, To_do.class);
             //clears the activity that started this activity, and also refreshes
@@ -132,5 +131,10 @@
             if (notificationManager != null) {
                 notificationManager.notify(0,builder.build());
             }
+        }
+
+        static MediaPlayer getMediaPlayer(Context context){
+            MediaPlayer mp = MediaPlayer.create(context.getApplicationContext(),(android.provider.Settings.System.DEFAULT_RINGTONE_URI));
+            return mp;
         }
        }

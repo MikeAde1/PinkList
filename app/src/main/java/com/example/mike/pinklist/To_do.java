@@ -150,7 +150,7 @@ public class To_do extends AppCompatActivity implements Fragment_todo.OnFragment
                 if (myVib != null){
                     myVib.cancel();
                 }
-                MediaPlayer mp = MediaPlayer.create(context.getApplicationContext(), (android.provider.Settings.System.DEFAULT_RINGTONE_URI));
+                MediaPlayer mp = AlarmReceiver.getMediaPlayer(context);
                 if (mp != null){
                     mp.stop();
                     mp.reset();
@@ -163,7 +163,6 @@ public class To_do extends AppCompatActivity implements Fragment_todo.OnFragment
             }
 
             Log.d(TAG,messages);
-        //Toast.makeText(context,String.valueOf(code),Toast.LENGTH_SHORT).show();
         }
     }
 

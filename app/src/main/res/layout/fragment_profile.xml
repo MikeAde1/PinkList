@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/todo"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
         <RelativeLayout
             android:paddingTop="15dp"
             android:paddingLeft="20dp"
@@ -20,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="100dp">
             <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
                 android:src="@drawable/circled_user_male_104_px_2"
                 android:layout_width="70dp"
