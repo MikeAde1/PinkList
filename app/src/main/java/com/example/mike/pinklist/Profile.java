@@ -60,7 +60,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 
-import com.example.mike.pinklist.R;
+
+import java.util.Objects;
 
 
 /**
@@ -193,48 +194,72 @@ import com.example.mike.pinklist.R;
     @Override
     public void onResume() {
         super.onResume();
-        //sp = getContext().getSharedPreferences(FILENAME, MODE_PRIVATE);
-        //SharedPreferences sharedPref = getContext().getSharedPreferences(FILENAMES, MODE_PRIVATE);
         s_vibrate.setChecked(sessionManager.getVibrationStatus());
-        //Toast.makeText(getContext(),String.valueOf(sessionManager.getVibrationStatus()),Toast.LENGTH_SHORT).show();
         s_status.setChecked(sessionManager.getStatus());
-        /*SharedPreferences sharedPref = getContext().getSharedPreferences(FILENAMES, MODE_PRIVATE);
-        //s_vibrate.setChecked(sharedPrefs.getBoolean("vibrate",false));
-        s_status.setChecked(sharedPref.getBoolean("set_status",false));*/
     }
 
     private void setUpViews() {
         db.child(fth.getCurrentUser().getUid()).child("User_details")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         //email = (String) dataSnapshot.child("email").getValue();
                         name = (String) dataSnapshot.child("names").getValue();
                         //tv.setText(name);
                         tv.setText("Mike");
                     }
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
                 });
         FirebaseUser user = fth.getCurrentUser();
         if (user != null){
             String email = user.getEmail();
             t_email.setText(email);
-
         }
-        db.child(fth.getCurrentUser().getUid()).child("Profile URL").addValueEventListener(new ValueEventListener() {
+        db.child(Objects.requireNonNull(fth.getCurrentUser()).getUid()).child("Profile URL").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 photo = String.valueOf(dataSnapshot.getValue());
+                /*Toast.makeText(getContext(),photo,Toast.LENGTH_SHORT).show();*/
                 if (photo != null){
-                Glide.with(getContext()).load(Uri.parse(photo)).diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .error(R.drawable.circled_user_male_104_px_2).into(cv);
-                /*Glide.with(getContext()).load(Uri.parse(photo)).diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .error(R.drawable.button).into(cv);*/
-            }}
+                    //Picasso.with(getContext()).load(photo).error(R.drawable.circled_user_male_104_px_2).into(cv);
+                    Glide.with(getContext()).load(photo).error(R.drawable.circled_user_male_104_px_2).listener(
+                            new RequestListener<String, GlideDrawable>() {
+                                @Override
+                                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                    Toast.makeText(getContext(),e.toString(),Toast.LENGTH_SHORT).show();
+                                    e.printStackTrace();
+                                    return false;
+                                }
+
+                                @Override
+                                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                    return false;
+                                }
+                            }
+                    ).into(cv);
+
+                    /*Glide.with(getContext()).load(Uri.parse(photo)).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.circled_user_male_104_px_2)
+                            .listener(new RequestListener<Uri, GlideDrawable>() {
+                        @Override
+                        public boolean onException(Exception e, Uri model, Target<GlideDrawable> target, boolean isFirstResource) {
+
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(GlideDrawable resource, Uri model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                            Toast.makeText(getContext(),"Updated",Toast.LENGTH_SHORT).show();
+                            return false;
+                        }
+                    }).into(cv);*/
+
+                }
+            }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getContext(),databaseError.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
      }
@@ -242,34 +267,49 @@ import com.example.mike.pinklist.R;
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode==0  && resultCode == RESULT_OK){
-            Uri uri = data.getData();
-                //cv.setImageURI(uri);
-                assert uri != null;
-                StorageReference filepath = mStorageRef.child("photos").child(uri.getLastPathSegment());
-                pd.setMessage("Uploading....");
-                pd.show();
-            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            final Uri uri = data.getData();
+            assert uri != null;
+            StorageReference filepath = mStorageRef.child("photos").child(Objects.requireNonNull(uri.getLastPathSegment()));
+            pd.setMessage("Uploading....");
+            pd.show();
+            filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                public void onSuccess(final Uri uri) {
                     pd.dismiss();
-                    Uri downloadUrl = taskSnapshot.getUploadSessionUri();
-                    //image_ref.setValue(downloadUrl.toString());
-                    PhotoClass pe = new PhotoClass();
-                    pe.setPhotoURl(downloadUrl != null ? downloadUrl.toString() : null);
-                    db.child(fth.getCurrentUser().getUid()).child("Profile URL").setValue(downloadUrl.toString())
+                    db.child(Objects.requireNonNull(fth.getCurrentUser()).getUid()).child("Profile URL").setValue(uri.toString())
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @RequiresApi(api = Build.VERSION_CODES.M)
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(getContext(),"updated",Toast.LENGTH_SHORT).show();
-                            }}
-                    });
-                    //Toast.makeText(getContext(),"Done", Toast.LENGTH_SHORT).show();
-                        }
-                });
-            }
+                                @RequiresApi(api = Build.VERSION_CODES.M)
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Glide.with(getContext()).load(uri).error(R.drawable.circled_user_male_104_px_2).listener(
+                                                new RequestListener<Uri, GlideDrawable>() {
+                                                    @Override
+                                                    public boolean onException(Exception e, Uri model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                                        Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                                                        e.printStackTrace();
+                                                        return false;
+                                                    }
+
+                                                    @Override
+                                                    public boolean onResourceReady(GlideDrawable resource, Uri model, Target<GlideDrawable> target,
+                                                                                   boolean isFromMemoryCache, boolean isFirstResource) {
+                                                        return false;
+                                                    }
+                                                }
+                                        ).into(cv);
+                                    }
+                                }
+                            });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    pd.dismiss();
+                    Toast.makeText(getContext(), "Upload failed", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            });
     }
 
     @Override
