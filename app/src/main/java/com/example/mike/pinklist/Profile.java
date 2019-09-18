@@ -205,8 +205,11 @@ import java.util.Objects;
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         //email = (String) dataSnapshot.child("email").getValue();
                         name = (String) dataSnapshot.child("names").getValue();
-                        //tv.setText(name);
-                        tv.setText("Mike");
+                        if (name != null){
+                            tv.setText(name);
+                        }else {
+                            tv.setText("----");
+                        }
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -221,9 +224,7 @@ import java.util.Objects;
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 photo = String.valueOf(dataSnapshot.getValue());
-                /*Toast.makeText(getContext(),photo,Toast.LENGTH_SHORT).show();*/
                 if (photo != null){
-                    //Picasso.with(getContext()).load(photo).error(R.drawable.circled_user_male_104_px_2).into(cv);
                     Glide.with(getContext()).load(photo).error(R.drawable.circled_user_male_104_px_2).listener(
                             new RequestListener<String, GlideDrawable>() {
                                 @Override
@@ -239,22 +240,6 @@ import java.util.Objects;
                                 }
                             }
                     ).into(cv);
-
-                    /*Glide.with(getContext()).load(Uri.parse(photo)).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.circled_user_male_104_px_2)
-                            .listener(new RequestListener<Uri, GlideDrawable>() {
-                        @Override
-                        public boolean onException(Exception e, Uri model, Target<GlideDrawable> target, boolean isFirstResource) {
-
-                            return false;
-                        }
-
-                        @Override
-                        public boolean onResourceReady(GlideDrawable resource, Uri model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                            Toast.makeText(getContext(),"Updated",Toast.LENGTH_SHORT).show();
-                            return false;
-                        }
-                    }).into(cv);*/
-
                 }
             }
             @Override
@@ -326,14 +311,12 @@ import java.util.Objects;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle item selection
-        switch (item.getItemId()) {
-            case R.id.edit_profile:
-                Intent intent =  new Intent(getActivity(),EditProfile.class);
-                getActivity().startActivityForResult(intent,0);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.edit_profile) {
+            Intent intent = new Intent(getActivity(), EditProfile.class);
+            getActivity().startActivityForResult(intent, 0);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
     // TODO: Rename method, update argument and hook method into UI event
 
