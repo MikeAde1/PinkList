@@ -22,7 +22,6 @@ import android.widget.TextView;
 import com.example.mike.pinklist.AlarmReceiver;
 import com.example.mike.pinklist.Fragment_todo;
 import com.example.mike.pinklist.R;
-import com.example.mike.pinklist.flux.Dispatcher;
 import com.example.mike.pinklist.models.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -31,28 +30,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import static android.content.Context.ALARM_SERVICE;
-import static com.google.android.gms.actions.ItemListIntents.ACTION_DELETE_ITEM;
 
 /**
  * Created by Mike on 10/25/2017.
  */
 public class TaskAdapter extends BaseAdapter{
     String TAG = "tag";
-    Context context;
-    CompoundButton button;
-    List<Task> tasks = new ArrayList<>();
-    LayoutInflater layoutInflater;
-    AlarmManager alarmManager;
-    private static FirebaseDatabase database;
-    DatabaseReference databaseRef;
-    FirebaseAuth firebaseAuth;
-    private final int placeholder = 0;
-    android.app.AlertDialog alertDialog;
+    private Context context;
+    private List<Task> tasks;
+    private LayoutInflater layoutInflater;
     public TaskAdapter(Context context, List<Task> tasks) {
         this.context = context;
         this.tasks = tasks;

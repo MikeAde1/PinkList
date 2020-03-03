@@ -25,9 +25,8 @@ import java.util.Locale;
 
 public class UpcomingAdapterr extends BaseAdapter {
     private Context context;
-    private List<Task> upcoming_list = new ArrayList<>();
+    private List<Task> upcoming_list;
     private LayoutInflater layoutInflater;
-    Task task = new Task();
     private String s;
     public UpcomingAdapterr(Context context, List<Task> upcoming_list) {
         this.context = context;

@@ -1,4 +1,4 @@
-package com.example.mike.pinklist.flux;
+package com.example.mike.pinklist.store;
 
 import android.content.Context;
 import android.content.Intent;
@@ -50,18 +50,15 @@ public class SessionManager {
     }
 
     public void logoutUser(){
-        // Clearing all data from Shared Preferences
         editor.clear();
         editor.commit();
         // After logout redirect user to Logging Activity
-        //Backend.getInstance().signOut();
         Intent i = new Intent(_context, Login.class);
         // Closing all the Activities
         //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         // Add new Flag to start new Activity
         //i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //FirebaseAuth.getInstance().signOut();
         // Staring Login Activity
         _context.startActivity(i);
     }
