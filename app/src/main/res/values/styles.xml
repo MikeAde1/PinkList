@@ -13,6 +13,11 @@
         <item name="android:colorForeground">@color/silver</item>
         <!--<item name="navigationIcon">@drawable/ic_if_arrow_back_1063891</item>-->
         <item name="searchViewStyle">@style/SearchViewMy</item>
+
+        <!--colorControlActivated is the floating label, underline and cursor colors, when focused. If you don’t define it, it will fall back to use your colorAccent
+        colorControlNormal is the underline color, when the view is NOT focused. If you don’t define it, it will fall back to use your textColorSecondary which is a bit 🤔.
+        textColorPrimary is the color of the user-input text
+        textColorHint is the hint color when the field is empty and NOT focused.-->
     </style>
     <style name="SearchViewMy" parent="Widget.AppCompat.SearchView">
         <item name="searchHintIcon">@null</item>

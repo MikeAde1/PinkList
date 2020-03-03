@@ -5,7 +5,7 @@ package com.example.mike.pinklist;
  */
 
 
-    import android.content.Context;
+import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
@@ -13,23 +13,23 @@ import android.util.Log;
 
     public class Appstatus {
 
-        private static Appstatus instance = new Appstatus();
-        static Context context;
-        ConnectivityManager connectivityManager;
-        NetworkInfo wifiInfo, mobileInfo;
-        boolean connected = false;
+        private static Context context;
+        private boolean connected = false;
 
         public static Appstatus getInstance(Context ctx) {
             context = ctx.getApplicationContext();
-            return instance;
+            return new Appstatus();
         }
 
-        public boolean isOnline() {
+        boolean isOnline() {
             try {
-                connectivityManager = (ConnectivityManager) context
+                ConnectivityManager connectivityManager = (ConnectivityManager) context
                         .getSystemService(Context.CONNECTIVITY_SERVICE);
 
-                NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+                NetworkInfo networkInfo = null;
+                if (connectivityManager != null) {
+                    networkInfo = connectivityManager.getActiveNetworkInfo();
+                }
                 connected = networkInfo != null && networkInfo.isAvailable() &&
                         networkInfo.isConnected();
                 return connected;

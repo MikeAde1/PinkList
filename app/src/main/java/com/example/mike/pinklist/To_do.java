@@ -2,7 +2,6 @@
 package com.example.mike.pinklist;
 
 import android.app.AlarmManager;
-import android.app.FragmentManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -11,8 +10,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.preference.PreferenceFragment;
-import android.provider.*;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
@@ -20,17 +17,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
-import com.example.mike.pinklist.models.BackHandledFragment;
-import com.example.mike.pinklist.models.Store;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class To_do extends AppCompatActivity implements Fragment_todo.OnFragmentInteractionListener,
         Scheduler.OnFragmentInteractionListener, Notifications.OnFragmentInteractionListener,Profile.OnFragmentInteractionListener{
@@ -120,23 +110,8 @@ public class To_do extends AppCompatActivity implements Fragment_todo.OnFragment
                 startActivity(intent);
             }
         });
-        //BottomNavigationViewHelper b = new BottomNavigationViewHelper();
     }
 
-    //This is for the search button
-        /*@Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            menu.add(0,900,3,"Post").setIcon(R.drawable.ic_search_black_24dp).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-        return super.onCreateOptionsMenu(menu);
-        }
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            if(item.getItemId() == 900){
-        }
-            if(item.getItemId()== 901){
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
     private void cancelNotification(Intent intent){
         String messages = intent.getStringExtra("messages");
         int code = intent.getIntExtra("code",0);

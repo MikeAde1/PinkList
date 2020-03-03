@@ -5,14 +5,11 @@
     import android.content.BroadcastReceiver;
     import android.content.Context;
     import android.content.DialogInterface;
-    import android.content.IntentFilter;
     import android.graphics.Color;
     import android.graphics.Typeface;
-    import android.graphics.drawable.ColorDrawable;
     import android.net.Uri;
     import android.os.Build;
     import android.os.Bundle;
-    import android.preference.CheckBoxPreference;
     import android.support.annotation.NonNull;
     import android.support.annotation.RequiresApi;
     import android.support.v4.app.Fragment;
@@ -39,7 +36,6 @@
     import android.widget.Toast;
 
     import com.example.mike.pinklist.adapters.TaskAdapter;
-    import com.example.mike.pinklist.flux.Dispatcher;
     import com.example.mike.pinklist.models.Store;
     import com.example.mike.pinklist.models.Task;
     import com.google.firebase.auth.FirebaseAuth;
@@ -115,15 +111,9 @@
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setHasOptionsMenu(true);//enables fragments to populate menu items
-            //if (getArguments() != null) {
-            //  mParam1 = getArguments().getString(ARG_PARAM1);
-            //mParam2 = getArguments().getString(ARG_PARAM2);
-            //}
             database = FirebaseDatabase.getInstance();
             firebaseAuth = FirebaseAuth.getInstance();
             databaseRef = database.getReference("users");
-
-            //setUpReceivers();
         }
 
         private void setUpReceivers() {
@@ -189,18 +179,6 @@
             setupAdapter();
             fetchData();
             return view;
-        }
-
-        @Override
-        public void onResume() {
-            super.onResume();
-            getContext().registerReceiver(broadcastReceiver,new IntentFilter(Dispatcher.DispatcherBroadCast));//
-        }
-
-        @Override
-        public void onPause() {
-            super.onPause();
-//            getContext().unregisterReceiver(broadcastReceiver);
         }
 
         private void setupAdapter() {
@@ -351,10 +329,8 @@
         private void updateListView() {
             taskAdapter.setTasks(tasklist);
             taskAdapter.notifyDataSetChanged();
-                            //Toast.makeText(context,String.valueOf(tasklist),Toast.LENGTH_LONG).show();
-            //        arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.activity_list_item, tasklist);
-            //        listView.setAdapter(arrayAdapter);
         }
+
         // TODO: Rename method, update argument and hook method into UI event
         public void onButtonPressed(Uri uri) {
             if (mListener != null) {
