@@ -97,7 +97,7 @@
                     .setContentIntent(pIntent)
                     .setAutoCancel(true)
                     .setContentTitle(title)
-                    .setSmallIcon(R.mipmap.logo).setContentText(msg);
+                    .setSmallIcon(R.drawable.logo).setContentText(msg);
 
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             if (notificationManager != null) {
