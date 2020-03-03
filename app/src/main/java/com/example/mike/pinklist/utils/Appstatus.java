@@ -1,4 +1,4 @@
-package com.example.mike.pinklist;
+package com.example.mike.pinklist.utils;
 
 /**
  * Created by Mike on 10/19/2017.
@@ -21,7 +21,7 @@ import android.util.Log;
             return new Appstatus();
         }
 
-        boolean isOnline() {
+        public boolean isOnline() {
             try {
                 ConnectivityManager connectivityManager = (ConnectivityManager) context
                         .getSystemService(Context.CONNECTIVITY_SERVICE);

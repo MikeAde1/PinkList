@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/Colorpigpink"
-    tools:context="com.example.mike.pinklist.Login">
+    tools:context="com.example.mike.pinklist.ui.Login">
 
     <ScrollView
         android:layout_width="match_parent"

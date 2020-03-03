@@ -1,4 +1,4 @@
-    package com.example.mike.pinklist;
+    package com.example.mike.pinklist.ui;
 
     import android.app.AlertDialog;
     import android.app.SearchManager;
@@ -35,6 +35,7 @@
     import android.widget.TextView;
     import android.widget.Toast;
 
+    import com.example.mike.pinklist.R;
     import com.example.mike.pinklist.adapters.TaskAdapter;
     import com.example.mike.pinklist.models.Store;
     import com.example.mike.pinklist.models.Task;

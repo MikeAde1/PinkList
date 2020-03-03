@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/Colorpigpink"
     android:layout_height="match_parent"
-    tools:context="com.example.mike.pinklist.Forgot">
+    tools:context="com.example.mike.pinklist.ui.Forgot">
 
     <Button
         android:onClick="onClick"

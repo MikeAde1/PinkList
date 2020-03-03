@@ -12,24 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login" />
-        <activity android:name=".Register" />
-        <activity android:name=".Forgot" />
+        <activity android:name=".ui.Login" />
+        <activity android:name=".ui.Register" />
+        <activity android:name=".ui.Forgot" />
         <activity
-            android:name=".To_do"
+            android:name=".ui.To_do"
             android:label="@string/title_activity_to_do" />
-        <activity android:name=".NewTask"/>
+        <activity android:name=".ui.NewTask"/>
         <receiver
-            android:name=".AlarmReceiver"
+            android:name=".utils.AlarmReceiver"
             android:enabled="true"
             android:exported="true" />
-        <activity android:name=".EditProfile" />
+        <activity android:name=".ui.EditProfile" />
 
     </application>
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.mike.pinklist;
+package com.example.mike.pinklist.utils;
 
 import android.app.AlarmManager;
 import android.app.NotificationManager;
@@ -10,9 +10,6 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.IBinder;
 import android.util.Log;
-
-import static android.app.Service.START_NOT_STICKY;
-import static android.app.Service.START_REDELIVER_INTENT;
 
 /**
  * Created by Mike on 11/1/2017.

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Colorpigpink"
-    tools:context="com.example.mike.pinklist.MainActivity">
+    tools:context="com.example.mike.pinklist.ui.MainActivity">
     <ImageView
         android:layout_width="250dp"
         android:layout_height="250dp"

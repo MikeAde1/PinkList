@@ -1,14 +1,13 @@
-package com.example.mike.pinklist;
+package com.example.mike.pinklist.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.WindowDecorActionBar;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.example.mike.pinklist.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

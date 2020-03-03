@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.mike.pinklist.Fragment_todo">
+    tools:context="com.example.mike.pinklist.ui.Fragment_todo">
 
     <!-- TODO: Update blank fragment layout -->
 

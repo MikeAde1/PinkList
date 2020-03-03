@@ -1,6 +1,5 @@
-    package com.example.mike.pinklist;
+    package com.example.mike.pinklist.utils;
 
-    import android.app.Notification;
     import android.app.NotificationManager;
     import android.app.PendingIntent;
     import android.content.BroadcastReceiver;
@@ -12,8 +11,10 @@
     import android.support.annotation.NonNull;
     import android.support.annotation.RequiresApi;
     import android.support.v4.app.NotificationCompat;
+
+    import com.example.mike.pinklist.R;
+    import com.example.mike.pinklist.ui.To_do;
     import com.example.mike.pinklist.store.SessionManager;
-    import com.example.mike.pinklist.models.Task;
     import com.google.firebase.auth.FirebaseAuth;
     import com.google.firebase.database.DataSnapshot;
     import com.google.firebase.database.DatabaseError;
@@ -21,8 +22,6 @@
     import com.google.firebase.database.FirebaseDatabase;
     import com.google.firebase.database.ValueEventListener;
 
-    import java.util.ArrayList;
-    import java.util.List;
     import java.util.Objects;
 
     import static android.content.Context.VIBRATOR_SERVICE;
@@ -106,7 +105,7 @@
             }
         }
 
-        static MediaPlayer getMediaPlayer(Context context){
+        public static MediaPlayer getMediaPlayer(Context context){
             MediaPlayer mp = MediaPlayer.create(context.getApplicationContext(),(android.provider.Settings.System.DEFAULT_RINGTONE_URI));
             return mp;
         }

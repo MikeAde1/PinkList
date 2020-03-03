@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-import com.example.mike.pinklist.Login;
+import com.example.mike.pinklist.ui.Login;
 
 /**
  * Created by Mike on 3/21/2018.

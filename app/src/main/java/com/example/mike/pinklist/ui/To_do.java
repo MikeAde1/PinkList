@@ -1,5 +1,5 @@
 
-package com.example.mike.pinklist;
+package com.example.mike.pinklist.ui;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -22,8 +22,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.mike.pinklist.R;
+import com.example.mike.pinklist.utils.AlarmReceiver;
+import com.example.mike.pinklist.utils.BottomNavigationViewHelper;
+
 public class To_do extends AppCompatActivity implements Fragment_todo.OnFragmentInteractionListener,
-        Scheduler.OnFragmentInteractionListener, Notifications.OnFragmentInteractionListener,Profile.OnFragmentInteractionListener{
+        Scheduler.OnFragmentInteractionListener, Notifications.OnFragmentInteractionListener, Profile.OnFragmentInteractionListener{
     private static final String TAG = "sending" ;
     private static final java.lang.String SELECTED_ITEM = "selected_item" ;
     private FloatingActionButton fb;

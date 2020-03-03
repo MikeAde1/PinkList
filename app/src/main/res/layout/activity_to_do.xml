@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.mike.pinklist.To_do">
+    tools:context="com.example.mike.pinklist.ui.To_do">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

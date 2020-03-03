@@ -1,4 +1,4 @@
-package com.example.mike.pinklist;
+package com.example.mike.pinklist.ui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mike.pinklist.R;
 import com.example.mike.pinklist.store.SessionManager;
 import com.example.mike.pinklist.models.ProfileEdit;
 import com.google.android.gms.tasks.OnCompleteListener;
