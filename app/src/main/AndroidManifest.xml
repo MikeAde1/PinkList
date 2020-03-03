@@ -24,11 +24,7 @@
         <activity
             android:name=".To_do"
             android:label="@string/title_activity_to_do" />
-        <activity android:name=".NewTask">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mike.pinklist.To_do" />
-        </activity>
+        <activity android:name=".NewTask"/>
         <receiver
             android:name=".AlarmReceiver"
             android:enabled="true"
