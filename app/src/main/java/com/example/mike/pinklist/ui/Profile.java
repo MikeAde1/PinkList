@@ -281,6 +281,8 @@ import java.util.Objects;
                     e.printStackTrace();
                 }
             });
+        } else {
+            Toast.makeText(getContext(), "No image returned", Toast.LENGTH_LONG).show();
         }
     }
 
