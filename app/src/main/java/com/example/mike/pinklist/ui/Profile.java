@@ -237,6 +237,7 @@ import java.util.Objects;
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (data != null) {
             final Uri uri = data.getData();
             assert uri != null;
             StorageReference filepath = mStorageRef.child("photos").child(Objects.requireNonNull(uri.getLastPathSegment()));
@@ -280,6 +281,7 @@ import java.util.Objects;
                     e.printStackTrace();
                 }
             });
+        }
     }
 
     @Override
