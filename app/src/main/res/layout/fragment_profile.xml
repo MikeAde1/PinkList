@@ -67,7 +67,7 @@
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:textColor="@color/silver"
                 android:layout_marginBottom="20dp"/>
-            <android.support.v7.widget.SwitchCompat
+            <androidx.appcompat.widget.SwitchCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Get email notifications"
@@ -78,7 +78,7 @@
                 android:layout_marginBottom="20dp"
                 app:thumbTint="@color/white"
                 />
-            <android.support.v7.widget.SwitchCompat
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/set_vibration"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="20dp"
@@ -98,7 +98,7 @@
                android:textColor="@color/silver"
                android:layout_marginBottom="20dp"/>
 
-           <android.support.v7.widget.SwitchCompat
+           <androidx.appcompat.widget.SwitchCompat
                android:layout_width="match_parent"
                android:id="@+id/set_sharing"
                android:layout_marginBottom="20dp"
@@ -109,7 +109,7 @@
                android:layout_marginRight="17dp"
                android:textColor="@color/light"
                app:thumbTint="@color/white"/>
-           <android.support.v7.widget.SwitchCompat
+           <androidx.appcompat.widget.SwitchCompat
                android:clickable="false"
                android:layout_width="match_parent"
                android:id="@+id/show_status"

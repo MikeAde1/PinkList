@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             app:titleTextColor="@color/midnightBlue"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
     </FrameLayout>
-        <android.support.design.widget.BottomNavigationView
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
             android:layout_marginTop="-10dp"
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             android:background="?android:attr/windowBackground"
             app:menu="@menu/navigation" />
     </LinearLayout>
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_alignParentBottom="true"
         android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
