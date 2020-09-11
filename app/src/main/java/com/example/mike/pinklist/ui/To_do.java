@@ -10,14 +10,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,7 +73,6 @@ public class To_do extends AppCompatActivity implements Fragment_todo.OnFragment
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 //content is the ID for frameLayout
                 transaction.replace(R.id.content, selectedFragment, "tag");
-                        //.addToBackStack(null);
                 //when you want to use replace you can addtobackstack() then pop
                 //when you add to backstack,you have to popbackstack() to get the old fragment back.
                 transaction.commit();
@@ -88,17 +87,15 @@ public class To_do extends AppCompatActivity implements Fragment_todo.OnFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do);
-        /*Backend backend = new Backend();
-        backend.onCreate();*/
         context = this;
         cancelNotification(getIntent());
-        Toolbar my_toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar my_toolbar = findViewById(R.id.toolbar);
         my_toolbar.setElevation(0f);
         setSupportActionBar(my_toolbar);
         //my_toolbar.setNavigationIcon(R.drawable.ic_if_arrow_back_1063891);
         getSupportActionBar().setTitle(R.string.to_do);
         //sets the first view to the first fragment
-        navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(navigation);
 
