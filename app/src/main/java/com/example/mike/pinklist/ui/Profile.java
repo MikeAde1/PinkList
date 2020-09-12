@@ -454,8 +454,10 @@ public class Profile extends Fragment implements SharedPreferences.OnSharedPrefe
     @Override
     public void onItemClick(int position) {
         if (position == CAMERA) {
+            bottomFragment.dismiss();
             takePhotoFromCamera();
         } else {
+            bottomFragment.dismiss();
             Intent i = new Intent(Intent.ACTION_PICK);
             i.setType("image/*");
             if (i.resolveActivity(requireActivity().getPackageManager()) != null) {
